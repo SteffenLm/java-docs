@@ -1,0 +1,60 @@
+---
+title: Generics04
+description: ''
+---
+
+import Exercise from '@site/src/components/Exercise';
+
+- Erstelle die Klassen `Club` und `Tournament` anhand des abgebildeten
+  Klassendiagramms
+- Erstelle eine ausführbare Klasse, welche ein Turnier mit mehreren Vereinen
+  erzeugt und die Paarungen ausgibt
+
+## Klassendiagramm
+
+```mermaid
+classDiagram
+    Tournament o-- Club
+    Tournament o-- Pair~Club~
+
+    class Pair~Club~ {
+        <<record>>
+        -partA T
+        -partB T
+    }
+
+    class Tournament {
+        <<record>>
+        -title String
+        -clubs List~Club~
+        -pairs List~Pair~Club~~
+        +addClub(club Club) void
+        +pairs() List~Pair~Club~~
+    }
+
+    class Club {
+        <<record>>
+        -name String
+        -marketValueInMillionEuros int
+    }
+```
+
+## Hinweise zur Klasse Tournament
+
+- Die Methode `void addClub(club: Club)` soll dem Turnier den eingehenden Verein
+  hinzufügen
+- Die Methode `List<Pair<Club>> pairs()` soll aus den Vereinen des Turniers
+  Paarungen für Hin- und Rückspiele bilden und zurückgeben
+
+## Konsolenausgabe
+
+```console
+SC Freiburg - Bayern Muenchen
+SC Freiburg - Borussia Dortmund
+Bayern Muenchen - SC Freiburg
+Bayern Muenchen - Borussia Dortmund
+Borussia Dortmund - SC Freiburg
+Borussia Dortmund - Bayern Muenchen
+```
+
+<Exercise pullRequest="65" branchSuffix="generics/04" />

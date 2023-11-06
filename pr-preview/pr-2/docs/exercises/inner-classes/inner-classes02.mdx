@@ -1,0 +1,51 @@
+---
+title: InnerClasses02
+description: ''
+---
+
+import Exercise from '@site/src/components/Exercise';
+
+- Passe die Klassen `Company` und `Employee` aus Übungsaufgabe
+  [Exceptions03](../exceptions/exceptions03) anhand des abgebildeten
+  Klassendiagramms an
+- Passe die ausführbare Klasse aus Übungsaufgabe
+  [Exceptions03](../exceptions/exceptions03) so an, dass sie fehlerfrei
+  ausgeführt werden kann
+- Die Klasse Emplyee soll hierbei eine Element Klasse sein.
+
+## Klassendiagramm
+
+```mermaid
+classDiagram
+    Company *-- Employee
+    Employee o-- Person
+
+    class Company {
+        -name String
+        -employees ArrayList~Employee~
+        -numberOfEmployees int
+        +Company(name String)
+        +addEmployee(employee Employee) void
+        +print() void
+    }
+
+    class Person {
+        -name String
+        +Person(name String)
+        +getName() String
+    }
+
+    class Employee {
+        -employeeId int
+        -person Person
+        -salary int
+        +Employee(employeeId int, person Person, salary int)
+        +getEmployeeId() int
+        +getName() String
+        +setSalary(salary int) void
+        +getSalary() int
+        +print() void
+    }
+```
+
+<Exercise pullRequest="55" branchSuffix="inner-classes/02" />

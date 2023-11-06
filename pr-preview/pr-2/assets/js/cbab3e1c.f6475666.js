@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkjava_docs=self.webpackChunkjava_docs||[]).push([[6623],{6829:(e,a,t)=>{t.r(a),t.d(a,{default:()=>l});var c=t(7294);function l(){return c.createElement("h1",null,"Wird noch erstellt.")}}}]);
