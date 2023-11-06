@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="de" dir="ltr" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v2.4.3">
+<title data-rh="true">Programmieren mit Java</title><meta data-rh="true" property="og:title" content="Programmieren mit Java"><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://steffenlm.github.io/java-docs/pr-preview/pr-2/slides/steffen/records-optionals"><meta data-rh="true" name="docusaurus_locale" content="de"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="de"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><link data-rh="true" rel="icon" href="/java-docs/pr-preview/pr-2/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://steffenlm.github.io/java-docs/pr-preview/pr-2/slides/steffen/records-optionals"><link data-rh="true" rel="alternate" href="https://steffenlm.github.io/java-docs/pr-preview/pr-2/slides/steffen/records-optionals" hreflang="de"><link data-rh="true" rel="alternate" href="https://steffenlm.github.io/java-docs/pr-preview/pr-2/slides/steffen/records-optionals" hreflang="x-default"><link rel="stylesheet" href="/java-docs/pr-preview/pr-2/assets/css/styles.c3fcfe5e.css">
+<link rel="preload" href="/java-docs/pr-preview/pr-2/assets/js/runtime~main.9e962335.js" as="script">
+<link rel="preload" href="/java-docs/pr-preview/pr-2/assets/js/main.9b6166fd.js" as="script">
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
+<div class="reveal reveal-viewport" style="width:100vw;height:100vh"><div class="slides"><section><section><h2>Agenda</h2><ul><li class="fragment">Records</li><li class="fragment">Optionals</li></ul></section></section><section><section><h2>Records</h2></section><section><h2>Records</h2><p class="fragment">Ein Record ist eine Datenklasse, deren Attribute nicht verändert werden können.</p><p class="fragment">Eine Datenklasse hat somit finale Attribute und Getter.</p></section><section><h2>Beispiel Datenklasse Dog I</h2><pre class="fragment"><code class="java">public class Dog {
+ final String name;
+ final int age;
+
+ public Dog(String name, int age) {
+  this.name = name;
+  this.age = age;
+ }
+
+ public String getName() {
+  return name;
+ }
+// ...
+</code></pre></section><section><h2>Beispiel Datenklasse Dog II</h2><pre class="fragment"><code class="java">// ...
+ public int getAge() {
+  return age;
+ }
+// weitere Methoden siehe Doku
+}
+</code></pre></section><section><h2>Beispiel Record Dog</h2><pre class="fragment"><code class="java">public record Dog(String name, int age) {}
+</code></pre></section><section><h2>Record</h2><p class="fragment">Da ein Record von der Record-Klasse erbt, kann nicht von einer anderen Klasse geerbt werden.</p><p class="fragment">Ein Record kann jedoch weitere Methoden haben und beliebig viele Schnittstellen implementieren.</p></section><section><h2>Record - Gratis Methoden</h2><ul><li class="fragment">Konstruktor</li><li class="fragment">Getter</li><li class="fragment">Equals</li><li class="fragment">hashCode</li><li class="fragment">toString</li></ul></section><section><h2>Demo</h2><ul><li class="fragment">Cat Klasse</li><li class="fragment">Dog Record</li><li class="fragment">height - Attribut</li><li class="fragment">isBig - Methode Record</li></ul></section><section><h2>Frag jetzt!</h2></section></section><section><section><h2>Optionals</h2></section><section><h2>Optional - Klasse</h2><p class="fragment">Mit Hilfe der Optional Klasse kann man NullPointerExceptions einfach behandeln.</p><p class="fragment">Was sind NullPointerExceptions?</p></section><section><h2>Null Pointer Exception I</h2><pre class="fragment"><code class="java">public class Dog {
+ public String name;
+ public Dog(String name) {
+  this.name = name;
+ }
+}
+</code></pre></section><section><h2>Null Pointer Exception II</h2><pre class="fragment"><code class="java">public class Main {
+  public static void main(String[] args) {
+    Dog doggo = new Dog(null);
+    doggo.name.equals("Bello"); // funktioniert nicht
+ }
+}
+</code></pre></section><section><h2>Optional als Lösung</h2><pre class="fragment"><code class="java">public class Dog {
+ public Optional&lt;String&gt; name;
+ public Dog(String name) {
+  this.name = Optional.ofNullable(name);
+ }
+}
+</code></pre></section><section><h2>Optional - Wrapper um den echten Wert</h2><p class="fragment">Die Optional Klasse verpackt den echten Wert hinter Methoden.</p><p class="fragment">Mithilfe von Methoden kann überprüft werden, ob ein Wert Null ist oder nicht.</p><p class="fragment">Mit Lambdafunktionen kann abhängig von der Präsenz des Wertes unterschiedliche Logik ausgeführt werden.</p></section><section><h2>Optional - Methoden I</h2><pre class="fragment"><code class="java">public class Main {
+  public static void main(String[] args) {
+    Optional&lt;String&gt; name = Name.createName();
+    if(name.isPresent()) {
+      System.out.println(name.get());
+    }
+    if(name.isEmpty()) {
+      System.out.println("No Name");
+    }
+ }
+}
+</code></pre></section><section><h2>Optional - Methoden II</h2><pre class="fragment"><code class="java">public class Main {
+  public static void main(String[] args) {
+    Optional&lt;String&gt; name = Name.createName();
+    name.ifPresent((value) -> System.out.println(value));
+    name.ifPresentOrElse(
+      (value) -> System.out.println(value),
+      () -> System.out.println("No Name")
+    );
+  }
+}
+</code></pre></section><section><h2>Frag jetzt!</h2></section><section><h2>Demo</h2><ul><li class="fragment">Human Middlename</li><li class="fragment">University Search Student</li></ul></section><section><h2>Frag jetzt!</h2></section></section><section><h2>Rest of the Day</h2><ul><li class="fragment">Wiederholung Java I</li><li class="fragment">Innere Klassen</li></ul></section></div></div></div>
+<script src="/java-docs/pr-preview/pr-2/assets/js/runtime~main.9e962335.js"></script>
+<script src="/java-docs/pr-preview/pr-2/assets/js/main.9b6166fd.js"></script>
+</body>
+</html>
