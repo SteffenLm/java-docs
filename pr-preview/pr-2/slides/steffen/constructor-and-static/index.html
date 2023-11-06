@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de" dir="ltr" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v2.4.3">
+<title data-rh="true">Programmieren mit Java</title><meta data-rh="true" property="og:title" content="Programmieren mit Java"><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://steffenlm.github.io/java-docs/pr-preview/pr-2/slides/steffen/constructor-and-static"><meta data-rh="true" name="docusaurus_locale" content="de"><meta data-rh="true" name="docusaurus_tag" content="default"><meta data-rh="true" name="docsearch:language" content="de"><meta data-rh="true" name="docsearch:docusaurus_tag" content="default"><link data-rh="true" rel="icon" href="/java-docs/pr-preview/pr-2/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://steffenlm.github.io/java-docs/pr-preview/pr-2/slides/steffen/constructor-and-static"><link data-rh="true" rel="alternate" href="https://steffenlm.github.io/java-docs/pr-preview/pr-2/slides/steffen/constructor-and-static" hreflang="de"><link data-rh="true" rel="alternate" href="https://steffenlm.github.io/java-docs/pr-preview/pr-2/slides/steffen/constructor-and-static" hreflang="x-default"><link rel="stylesheet" href="/java-docs/pr-preview/pr-2/assets/css/styles.c3fcfe5e.css">
+<link rel="preload" href="/java-docs/pr-preview/pr-2/assets/js/runtime~main.a243b35f.js" as="script">
+<link rel="preload" href="/java-docs/pr-preview/pr-2/assets/js/main.9b6166fd.js" as="script">
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}return t}()||function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
+<div class="reveal reveal-viewport" style="width:100vw;height:100vh"><div class="slides"><section><section>Fragen oder Probleme?</section></section><section><section><h2>Wiederholung</h2></section><section><h2>Klasse</h2><ul><li class="fragment">Abstraktion von Objekten</li><li class="fragment">definiert durch Methoden und Attribute</li></ul></section><section><h2>Objekt</h2><ul><li class="fragment">Instanz einer Klasse</li><li class="fragment">Verhalten abhängig von der Instanz</li><li class="fragment">ist eine Referenzvariable</li><li class="fragment">hat den default Wert null</li></ul></section><section><h2>Modifiers</h2><ul><li class="fragment">public/private</li><li class="fragment">Getter- und Settermethoden</li><li class="fragment">this</li><li class="fragment">Überladen von Methoden</li></ul></section></section><section><section><h2>Konstruktor</h2></section><section><h2>Für was ist ein Konstruktor</h2><ul><li class="fragment">Initialisierung eines Objekts</li><li class="fragment">Verschiedene Initialisierungen eines Objekts</li></ul></section><section><h2>Wie erstelle ich einen Konstruktor?</h2><ul><li class="fragment">Access Modifier</li><li class="fragment">Klassenname</li><li class="fragment">Parameterliste</li><li class="fragment">Methodenrumpf</li></ul></section><section><pre><code class="java">public class Car {
+  private String color;
+  private char engineType;
+
+  public Car(String color, char engineType) {
+    this.color = color;
+    this.engineType = engineType;
+  }
+}
+</code></pre></section><section><h2>Wie erstelle ich mehrere Konstruktoren?</h2><ul><li class="fragment">gleiche Regeln wie beim Überladen von Methoden</li></ul></section><section><pre><code class="java">public class Car {
+  private String color;
+  private char engineType;
+
+  public Car(String color) {
+    this.color = color;
+    this.engineType = 'b';
+  }
+
+  public Car(String color, char engineType) {
+    this.color = color;
+    this.engineType = engineType;
+  }
+}
+</code></pre></section><section><h2>Demo</h2><ul><li class="fragment">Human</li></ul></section></section><section><section><h2>Was ist der static Modifier?</h2></section><section><h2>Kann angewendet werden auf</h2><ul><li class="fragment">Attribute</li><li class="fragment">Methoden</li></ul></section><section><h2>Statische Attribute</h2><p class="fragment">beziehen sich auf die Klasse</p><ul><li class="fragment">keine Unterscheidung zwischen Objekten notwendig</li><li class="fragment">z. B. die Zahl Pi</li><li class="fragment">Zugriff über Klassenname</li><li class="fragment">z. B. Math.PI</li></ul></section><section><h2>Statische Methoden</h2><p class="fragment">beziehen sich auf die Klasse</p><ul><li class="fragment">kein Zugriff auf Objektattribute möglich</li><li class="fragment">z. B. berechnen eines absoluten Wertes</li><li class="fragment">Zugriff über Klassenname</li><li class="fragment">Math.abs()</li></ul></section><section><h2>Demo privat/public static</h2><ul><li class="fragment">Humans</li></ul></section><section data-background-iframe="https://giphy.com/embed/lMVNl6XxTvXgs"></section><section>Finally public static void main verstanden 🥳</section></section><section><section><h2>Zusammenfassung</h2></section><section><h2>Konstruktor</h2><ul><li class="fragment">Initialisierung von Objekten</li><li class="fragment">Mehrere Konstruktoren durch Methodenüberladung</li></ul></section><section><h2>Der static Modifier</h2><ul><li class="fragment">Methoden und Attribute</li><li class="fragment">Zugriff auf Instanzattribute nicht möglich</li></ul></section><section><h2>Rest of the day</h2><ul><li class="fragment">Aufgabe Objects 02 - 07</li><li class="fragment">Tutego</li><li class="fragment">Wiederholen</li></ul></section></section></div></div></div>
+<script src="/java-docs/pr-preview/pr-2/assets/js/runtime~main.a243b35f.js"></script>
+<script src="/java-docs/pr-preview/pr-2/assets/js/main.9b6166fd.js"></script>
+</body>
+</html>
